@@ -380,10 +380,11 @@ textarea {
 
 .orbit {
   position: absolute;
-  left: 50%;
+  left: 49.5%;
   transform: rotateX(70deg);
   z-index: 0;
-  border: 1px solid white;
+  border: 10px solid #b3d4fc29;
+  z-index: 3;
 }
 
 .orbit-one {
@@ -419,6 +420,7 @@ textarea {
   transition: box-shadow .3s linear;
   z-index: 1;
   background-size: cover;
+  filter: drop-shadow(0 0 3px #b3d4fc);
 }
 .planet-one {
   background-image: url("../img/planet.png");
@@ -430,10 +432,10 @@ textarea {
   background-image: url("../img/gh.png");
 }
 
-.planet:hover {
+.planet:not(.scaling-planet):hover {
   box-shadow: 0 0 0 5px #fff;
 }
-.planet:hover > .planet-line {
+.planet:not(.scaling-planet):hover > .planet-line {
   animation: animateLine .5s linear;
   display: block;
 }
@@ -456,5 +458,33 @@ textarea {
   line-height: 10px;
   z-index: 2;
 }
+@keyframes scalePlanet {
+  from {
+    left: 0;
+  }
+  to {
+    transform: scaleY(24) scaleX(8);
+    left: 65%;
+  }
+}
 
+@keyframes shiftOrbit {
+  from {
+    left: 49.5%;
+  }
+  to {
+    left: 0;
+  }
+}
 
+.scaling-planet {
+  animation: scalePlanet 1.5s linear;
+  animation-fill-mode: forwards;
+}
+
+.shifted-orbit {
+  border: none;
+  animation: shiftOrbit 1.5s linear;
+  animation-fill-mode: forwards;
+  z-index: 4;
+}

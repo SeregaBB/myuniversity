@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1f4fea32-d4cb-41a2-9399-ba13b7825d89" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +29,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601068801302</updated>
       <workItem from="1601068803819" duration="4667000" />
-      <workItem from="1601117582560" duration="17230000" />
+      <workItem from="1601117582560" duration="22234000" />
     </task>
     <servers />
   </component>
@@ -42,14 +45,30 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="337" y="132" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1440.900@0.0.1440.900" timestamp="1601293155035" />
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1601304378714">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1601304378714" />
+    <state width="1419" height="245" key="GridCell.Tab.0.center" timestamp="1601304378712">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1601304378712" />
+    <state width="1419" height="245" key="GridCell.Tab.0.left" timestamp="1601304378711">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1601304378711" />
+    <state width="1419" height="245" key="GridCell.Tab.0.right" timestamp="1601304378713">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1601304378713" />
     <state x="385" y="210" key="run.anything.popup" timestamp="1601072409391">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="385" y="210" key="run.anything.popup/0.0.1440.900@0.0.1440.900" timestamp="1601072409391" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1601117989369">
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1601309007228">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1601117989369" />
+    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1601309007228" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

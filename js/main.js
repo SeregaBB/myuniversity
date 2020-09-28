@@ -54,37 +54,42 @@ planet.addEventListener('mouseout', ()=>{
 })
 */
 
-
+const divs = document.querySelectorAll('div');
 class Planet {
-  constructor(alpha, time, planet, shiftX, shiftY, shiftXtwo, shiftYtwo) {
+  constructor(alpha, time, planet, lengthX, lengthY, shiftX, shiftY) {
     this.phi = 0;
     this.isPaused = false;
     this.alpha = alpha;
     this.time = time;
     this.planet = planet;
+    this.lengthX = lengthX;
+    this.lengthY = lengthY;
     this.shiftX = shiftX;
     this.shiftY = shiftY;
-    this.shiftXtwo = shiftXtwo;
-    this.shiftYtwo = shiftYtwo;
     this.completeTurn = 6.3;
+    this.stopped = false;
     this._setEventListeners();
   }
 
 
   movePlanet() {
     setInterval(()=>{
-      let x = 12.5*Math.cos(this.phi)*this.shiftX;
-      let y = 4*Math.sin(this.phi)*this.shiftY;
-      let x2 = x*Math.cos(this.alpha) + y*Math.sin(this.alpha) + this.shiftXtwo;
-      let y2 = -x*Math.sin(this.alpha) + y*Math.cos(this.alpha) + this.shiftYtwo;
-      this.planet.style = `transform: scaleY(3) translate(${x2}px, ${y2}px)`;
-      if (!this.isPaused) this.phi += 0.005;
-      if (this.phi > this.completeTurn) this.phi = 0;
-      if (this.phi < 3) this.planet.style['z-index'] = 3;
-      if (this.phi > 3) this.planet.style['z-index'] = 1;
+      if(!this.stopped) {
+        let coefficientX = 12.5 * Math.cos(this.phi) * this.lengthX;
+        let coefficientY = 4 * Math.sin(this.phi) * this.lengthY;
+        let positionX = coefficientX * Math.cos(this.alpha) + coefficientY * Math.sin(this.alpha) + this.shiftX;
+        let positionY = -coefficientX * Math.sin(this.alpha) + coefficientY * Math.cos(this.alpha) + this.shiftY;
+        this.planet.style = `transform: scaleY(3) translate(${positionX}px, ${positionY}px)`;
+        if (!this.isPaused) this.phi += 0.005;
+        if (this.phi > this.completeTurn) this.phi = 0;
+      //  if (this.phi < 3) this.planet.style['z-index'] = 3;
+        //if (this.phi > 3) this.planet.style['z-index'] = 1;
+      }
     }, this.time);
   }
-
+ toggleMove(){
+    this.stopped = !this.stopped;
+ }
   _setEventListeners = () => {
     this.planet.addEventListener('mouseover', ()=>{
       this.isPaused = true;
@@ -92,7 +97,21 @@ class Planet {
 
     this.planet.addEventListener('mouseout', ()=>{
       this.isPaused = false;
+    });
+
+    this.planet.addEventListener('click', ()=>{
+      this.toggleMove();
+      this.planet.classList.toggle('scaling-planet');
+      this.planet.closest('.orbit').classList.toggle('shifted-orbit');
+
+      /*divs.forEach((item)=>{
+        if (item !== currentOrbit && item !== currentPlanet) {
+          item.style.display = 'none';
+        }
+      })*/
+      //window.open(this.planet.getAttribute('data-click-target'))
     })
+
   }
 
 }
