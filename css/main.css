@@ -1,0 +1,460 @@
+
+@font-face {
+   font-family: MachineText;
+   src: url("19783.ttf") format('truetype');
+
+}
+@keyframes animateLine {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+  }
+  50% {
+    width: 100%;
+    height: 25%;
+  }
+  100% {
+    width: 100%;
+    height: 50%;
+  }
+}
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .sr-only class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+@keyframes pulseSun {
+  from {
+    filter: drop-shadow(0 0 50px #FEBA01);
+  }
+  to {
+    filter: drop-shadow(0 0 30px #FEBA01);
+
+  }
+}
+
+@keyframes rotateSun {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.space {
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #1b142f;
+  background-image: url("../img/fog.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-blend-mode: soft-light;
+}
+.star {
+  width: 5px;
+  height: 5px;
+  border-radius: 1000px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  filter: drop-shadow(0 0 5px #b3d4fc);
+}
+
+.sun {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin: 0 0 0 -100px;
+  background-image: url("../img/sun.png");
+  background-size: cover;
+  filter: drop-shadow(0 0 50px #FEBA01);
+  cursor: pointer;
+  animation: rotateSun 30s linear;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  z-index: 1;
+
+}
+
+.sun:hover {
+  animation: pulseSun  1s cubic-bezier(0.65, 0.35, 1, 0.91), rotateSun 30s linear;
+  animation-direction: alternate, normal;
+  animation-fill-mode: both, forwards;
+  animation-iteration-count: infinite;
+}
+
+.hello {
+  font-family: MachineText;
+  font-size: 40px;
+  line-height: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  background: rgba(78, 32, 153, 0.2);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 15px;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+@keyframes fadeOutHello {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.hello.fadeout {
+  animation: fadeOutHello 2s linear;
+}
+.hello.hidden {
+  display: none;
+}
+.hello-right-side {
+  width: 80%;
+}
+.hello-text {
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 0;
+}
+.close-hello {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.orbit {
+  position: absolute;
+  left: 50%;
+  transform: rotateX(70deg);
+  z-index: 0;
+  border: 1px solid white;
+}
+
+.orbit-one {
+  width: 600px;
+  height: 400px;
+  top: 23%;
+  margin: 0 0 0 -300px;
+  border-radius: 300px/200px;
+}
+.orbit-two {
+  width: 1000px;
+  height: 800px;
+  top: 0%;
+  margin: 0 0 0 -500px;
+  border-radius: 500px/400px;
+}
+
+.orbit-three {
+  width: 1400px;
+  height: 1200px;
+  top: -22%;
+  margin: 0 0 0 -700px;
+  border-radius: 700px/600px;
+}
+.planet {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 23%;
+  border-radius: 100px;
+  transform: scaley(3);
+  cursor: pointer;
+  transition: box-shadow .3s linear;
+  z-index: 1;
+  background-size: cover;
+}
+.planet-one {
+  background-image: url("../img/planet.png");
+}
+.planet-two {
+  background-image: url("../img/planet2.png");
+}
+.planet-three {
+  background-image: url("../img/gh.png");
+}
+
+.planet:hover {
+  box-shadow: 0 0 0 5px #fff;
+}
+.planet:hover > .planet-line {
+  animation: animateLine .5s linear;
+  display: block;
+}
+
+.planet-line {
+  width: 100%;
+  height: 50%;
+  border-right: 1px solid white;
+  transform: skew(20deg) translate(-45px, -18px);
+  border-top: 1px solid white;
+  display: none;
+  z-index: 2;
+}
+
+.planet-line > p {
+  color: #fff;
+  margin: 0;
+  font-family: MachineText;
+  font-size: 25px;
+  line-height: 10px;
+  z-index: 2;
+}
+
+
