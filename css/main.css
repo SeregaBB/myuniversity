@@ -6,8 +6,8 @@
 }
 @keyframes animateLine {
   0% {
-    width: 0%;
-    height: 0%;
+    width: 0;
+    height: 0;
   }
   25% {
     width: 100%;
@@ -284,7 +284,6 @@ textarea {
 }
 
 .space {
-
   width: 100vw;
   height: 100vh;
   background-color: #1b142f;
@@ -294,6 +293,7 @@ textarea {
   background-size: 100%;
   background-blend-mode: soft-light;
 }
+
 .star {
   width: 5px;
   height: 5px;
@@ -302,7 +302,10 @@ textarea {
   position: absolute;
   top: 50%;
   left: 10%;
-  filter: drop-shadow(0 0 5px #b3d4fc);
+  animation: starPulse linear infinite;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  opacity: .3;
 }
 
 .sun {
@@ -320,7 +323,7 @@ textarea {
   animation-direction: normal;
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
-  z-index: 1;
+  z-index: 4;
 
 }
 
@@ -332,7 +335,7 @@ textarea {
 }
 
 .hello {
-  font-family: MachineText;
+  font-family: MachineText, serif;
   font-size: 40px;
   line-height: 30px;
   position: absolute;
@@ -396,7 +399,7 @@ textarea {
 .orbit-two {
   width: 1000px;
   height: 800px;
-  top: 0%;
+  top: 0;
   margin: 0 0 0 -500px;
   border-radius: 500px/400px;
 }
@@ -452,7 +455,7 @@ textarea {
 .planet-line > p {
   color: #fff;
   margin: 0;
-  font-family: MachineText;
+  font-family: MachineText, serif;
   font-size: 25px;
   line-height: 10px;
   z-index: 2;
@@ -463,7 +466,7 @@ textarea {
   }
   to {
     transform: scaleY(24) scaleX(8);
-    left: 65%;
+    left: 15%;
   }
 }
 
@@ -473,6 +476,10 @@ textarea {
   }
   to {
     left: 0;
+    width: 100%;
+    height: 0;
+    margin: 0;
+    top: 40%;
   }
 }
 
@@ -485,5 +492,52 @@ textarea {
   border: none;
   animation: shiftOrbit 1.5s linear;
   animation-fill-mode: forwards;
-  z-index: 4;
+  z-index: 6;
+}
+@keyframes overlayOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #f594ff96;
+  z-index: 5;
+  animation: overlayOpacity 1.5s linear;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-text {
+  font-family: MachineText, serif;
+  font-size: 40px;
+  color: white;
+  text-shadow: 0 0 5px #000;
+  line-height: 30px;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 50%;
+}
+
+@keyframes starPulse {
+  from {
+    filter: drop-shadow(0 0 2px #b3d4fc);
+    opacity: .3;
+  }
+  to {
+    filter: drop-shadow(0 0 6px #b3d4fc);
+    opacity: 1;
+  }
+
+
 }

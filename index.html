@@ -24,7 +24,9 @@
 
 <body>
   <main class="space">
-   <div class="overlay">
+    <div class="overlay hidden">
+      <p class="overlay-text"></p>
+    </div>
     <div class="orbit orbit-three">
       <div class="planet planet-three" data-click-target="https://github.com/SeregaBB">
         <div class="planet-line">
@@ -50,7 +52,8 @@
       </div>
     </div>
 
-   <div class="star" data-depth="0.2"></div>
+   <div class="star"></div>
+    <div class="star star-close"></div>
     <div class="sun"></div>
     <div class="hello hidden">
       <img alt="" class="hello-img" src="img/me.png" style="border: 4px dotted black" width="100">
@@ -59,13 +62,14 @@
       </div>
       <button class="close-hello">X</button>
     </div>
-   </div>
   </main>
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/vendor/parallax.js"></script>
   <script src="js/plugins.js"></script>
 
   <script src="js/main.js"></script>
+  <script src="js/stars.js"></script>
+
 
 
 </body>

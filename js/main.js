@@ -1,23 +1,23 @@
-const text = 'Hi! My name is Sergey. You are now in my personal universe, each planet means some part of my life. Explore them! :)';
+const helloText = 'Hi! My name is Sergey. You are now in my personal universe, each planet means some part of my life. Explore them! :)';
+const ghText = 'Это планета Github. Вся её поверхность состоит из растений, которые по-научному называются "Repositories".  Советую срывать только самые свежие.';
+
 const textElem = document.querySelector('.hello-text');
 const closeHelloButton = document.querySelector('.close-hello');
 const hello = document.querySelector('.hello');
 const planet = document.querySelector('.planet-one');
 const planetTwo = document.querySelector('.planet-two');
 const ghPlanet = document.querySelector('.planet-three');
+const overlay = document.querySelector('.overlay');
 
-function writeText(text){
+function writeText(textElem, text){
   if (text.length > 0) {
     textElem.textContent = textElem.textContent + text[0];
     setTimeout(()=>{
-      writeText(text.slice(1));
+      writeText(textElem, text.slice(1));
     }, 50);
-
   }
-
 }
 
-writeText(text)
 
 closeHelloButton.addEventListener('click', ()=>{
    hello.classList.add('fadeout');
@@ -28,40 +28,17 @@ closeHelloButton.addEventListener('click', ()=>{
 });
 
 
-/*
-let isPaused = false;
-function movePlanet(alpha, time) {
-  let phi = 0;
-  setInterval(()=>{
-    let x = 14*Math.cos(phi)*-20;
-    let y = 5*Math.sin(phi)*15;
-    let x2 = x*Math.cos(alpha) + y*Math.sin(alpha) + 280;
-    let y2 = -x*Math.sin(alpha) + y*Math.cos(alpha) + 40;
-    planet.style = `transform: scaleY(3) translate(${x2}px, ${y2}px)`;
-    if (!isPaused) phi += 0.005;
 
-
-  }, time);
-}
-
-movePlanet(25.1, 100);
-planet.addEventListener('mouseover', ()=>{
-  isPaused = true;
-});
-
-planet.addEventListener('mouseout', ()=>{
-  isPaused = false;
-})
-*/
-
-const divs = document.querySelectorAll('div');
 class Planet {
-  constructor(alpha, time, planet, lengthX, lengthY, shiftX, shiftY) {
+  constructor(planetText ,alpha, time, planet, overlay, lengthX, lengthY, shiftX, shiftY) {
     this.phi = 0;
     this.isPaused = false;
     this.alpha = alpha;
     this.time = time;
     this.planet = planet;
+    this.planetText = planetText;
+    this.overlay = overlay;
+    this.overlayText = this.overlay.querySelector('.overlay-text');
     this.lengthX = lengthX;
     this.lengthY = lengthY;
     this.shiftX = shiftX;
@@ -71,6 +48,15 @@ class Planet {
     this._setEventListeners();
   }
 
+  writeText(text){
+    if (text.length > 0) {
+      this.overlayText.innerHTML = this.overlayText.innerHTML + text[0];
+      let timer = setTimeout(()=>{
+        if (this.planet.classList.contains('scaling-planet')) this.writeText(text.slice(1));
+        else clearInterval(timer);
+      }, 50);
+    }
+  }
 
   movePlanet() {
     setInterval(()=>{
@@ -103,22 +89,32 @@ class Planet {
       this.toggleMove();
       this.planet.classList.toggle('scaling-planet');
       this.planet.closest('.orbit').classList.toggle('shifted-orbit');
-
-      /*divs.forEach((item)=>{
-        if (item !== currentOrbit && item !== currentPlanet) {
-          item.style.display = 'none';
-        }
-      })*/
-      //window.open(this.planet.getAttribute('data-click-target'))
+      this.overlay.classList.toggle('hidden');
+      const overlayTextElement = this.overlay.querySelector('.overlay-text');
+      overlayTextElement.textContent = '';
+      if (!this.overlay.classList.contains('hidden')) {
+        setTimeout(() => {
+          this.writeText(this.planetText);
+        }, 1500)
+      }
     })
 
   }
 
 }
 
-const earth = new Planet(25.15, 10, planet, -23.5, 16.5, 270, 30);
-const moon = new Planet(25.14, 5, planetTwo, -40.3, 34, 465, 62);
-const gh = new Planet(25.14, 20, ghPlanet, -56, 51.1, 675, 92.9);
+const earth = new Planet(helloText, 25.15, 10, planet, overlay, -23.5, 16.5, 270, 30);
+const moon = new Planet('Тестовый текст, который не несёт смысла',25.14, 5, planetTwo, overlay, -40.3, 34, 465, 62);
+const gh = new Planet(
+  ghText,
+  25.14,
+  20,
+  ghPlanet,
+  overlay,
+  -56,
+  51.1,
+  675,
+  92.9);
 
 earth.movePlanet();
 moon.movePlanet();
